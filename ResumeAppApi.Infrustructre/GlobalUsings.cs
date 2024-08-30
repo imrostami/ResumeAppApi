@@ -1,0 +1,17 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using ResumeAppApi.Domain.Entities;
+global using ResumeAppApi.Domain.Repositories;
+global using ResumeAppApi.Infrustructre.Persistense;
+global using ResumeAppApi.Infrustructre.Repositories.BlogRepositories;
+global using ResumeAppApi.Infrustructre.Repositories.MessageRepositories;
+global using ResumeAppApi.Infrustructre.Repositories.PortfolioRepositories;
+global using ResumeAppApi.Infrustructre.Repositories.WorkSampleRepositories;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using ResumeAppApi.Domain.Entities.BlogAgg;
+global using ResumeAppApi.Domain.Entities.PortfolioAgg;
+global using ResumeAppApi.Domain.Entities.MessageAgg;
+global using ResumeAppApi.Domain.Entities.WorkSampleAgg;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using ResumeAppApi.Infrustructre.Extentions;

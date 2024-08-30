@@ -1,0 +1,21 @@
+@ServiceHost_HostAddress = https://localhost:7011
+
+GET {{ServiceHost_HostAddress}}/api/skills/getSkills
+
+###
+
+GET {{ServiceHost_HostAddress}}/api/messages/getMessages
+
+
+###
+
+
+POST {{ServiceHost_HostAddress}}/api/users/login
+
+Content-Type application/json
+{
+  "email":"info@mail.com",
+  "password":"hello"
+}
+
+###
