@@ -24,36 +24,37 @@ I used **Clean Architecture** and the **CQRS Pattern** as the chosen architectur
 
 ## Technologies in Backend
 
-<div style="display: flex; justify-content: space-around; align-items: center;">
-    <div style="text-align: center;">
-        <img src="./docImages/dotnet.png" alt="aspnetcore" style="width: 65px;">
-        <p>Asp.Net Core</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="./docImages/mysql.png" alt="My SQL" style="width: 50px;">
-        <p>My Sql</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="./docImages/ef.png" alt="Entity Freamwork" style="width: 50px;">
-        <p>Entity Framework Core</p>
-    </div>
-</div>
+<table>
+    <tr>
+        <td style="text-align: center;">
+            <img src="./docImages/dotnet.png" alt="aspnetcore" style="width: 65px;">
+            <p>Asp.Net Core</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/mysql.png" alt="My SQL" style="width: 50px;">
+            <p>My Sql</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/ef.png" alt="Entity Freamwork" style="width: 50px;">
+            <p>Entity Framework Core</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="./docImages/medaitr.png" alt="MediateR" style="width: 50px;">
+            <p>MediateR</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/automapper.png" alt="Auto Mapper" style="width: 50px;">
+            <p>Auto Mapper</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/flv.png" alt="FluentValidation" style="width: 50px;">
+            <p>Fluent Validation</p>
+        </td>
+    </tr>
+</table>
 
-
-<div style="display: flex; justify-content: space-around; align-items: center;">
-    <div style="text-align: center;">
-        <img src="./docImages/medaitr.png" alt="MediateR" style="width: 50px;">
-        <p>MediateR</p>
-    </div>
-     <div style="text-align: center;">
-        <img src="./docImages/automapper.png" alt="Auto Mapper" style="width: 50px;">
-        <p>Auto Mapper</p>
-    </div>
-     <div style="text-align: center;">
-        <img src="./docImages/flv.png" alt="FluentValidation" style="width: 50px;">
-        <p>Fluent Validation</p>
-    </div>
-</div>
 
 
 
@@ -85,21 +86,23 @@ I have used ***Tailwind CSS*** to design the user interface
 
 
 
-<div style="display: flex; justify-content: space-around; align-items: center;">
-    <div style="text-align: center;">
-        <img src="./docImages/vue.webp" alt="Vue js" style="width: 50px;">
-        <p>Vue js</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="./docImages/nuxt.png" alt="nuxt js" style="width: 50px;">
-        <p>Nuxt js</p>
-    </div>
-    <div style="text-align: center;">
-        <img src="./docImages/tailwind.png" alt="tailwind css" style="width: 50px;">
-        <p>Tailwind CSS</p>
-    </div>
-     <div style="text-align: center;">
-        <img src="./docImages/axios.png" alt="axios" style="width: 50px;">
-        <p>Axios js</p>
-    </div>
-</div>
+<table>
+    <tr>
+        <td style="text-align: center;">
+            <img src="./docImages/vue.webp" alt="Vue js" style="width: 50px;">
+            <p>Vue js</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/nuxt.png" alt="Nuxt js" style="width: 50px;">
+            <p>Nuxt js</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/tailwind.png" alt="Tailwind CSS" style="width: 50px;">
+            <p>Tailwind CSS</p>
+        </td>
+        <td style="text-align: center;">
+            <img src="./docImages/axios.png" alt="Axios" style="width: 50px;">
+            <p>Axios js</p>
+        </td>
+    </tr>
+</table>
