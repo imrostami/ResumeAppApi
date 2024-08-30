@@ -16,4 +16,8 @@ public class BlogDto
     public string LastUpdateTimeLongDate { get; set; }
     public string Picture { get; set; }
 	public string PircutrAlt { get; set; }
+
+
+
+	
 }

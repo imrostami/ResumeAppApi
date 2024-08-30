@@ -5,6 +5,8 @@ using ResumeAppApi.Application.BlogCategories.Commands.DeleteBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Commands.UpdateBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategories;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategoryById;
+using ResumeAppApi.Application.Blogs.Queries.GetBlogById;
+using ResumeAppApi.Application.Blogs.Queries.GetBlogs;
 using ServiceHost.ApiResponses.Blogs;
 
 namespace ServiceHost.Controllers
@@ -72,6 +74,37 @@ namespace ServiceHost.Controllers
 
 			return NotFound(response);
 		}
+
+		[HttpGet("getBlogs")]
+		public async Task<IActionResult> GetBlogs()
+		{
+			var blogs = await mediator.Send(new GetBlogsQuery());
+			var response = new GetBlogsResponse(blogs);
+			return Ok(response);
+		}
+
+		[HttpGet("getBlog")]
+		public async Task<IActionResult> GetBlog(GetBlogByIdQuery query)
+		{
+			var blog = await mediator.Send(query);
+			var response = new GetBlogResponse(blog);
+
+			if (response.Ok)
+				return Ok(response);
+
+			return NotFound(response);
+		}
+		[HttpPost("createBlog")]
+		public async Task<IActionResult> CreateBlog()
+		{
+			return Ok();
+		}
+
+
+
+
+
+
 
 
 

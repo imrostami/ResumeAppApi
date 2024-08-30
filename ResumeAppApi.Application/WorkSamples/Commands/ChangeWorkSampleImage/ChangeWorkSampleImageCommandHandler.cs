@@ -13,6 +13,7 @@ public class ChangeWorkSampleImageCommandHandler(IWorkSampleRepository workSampl
 
 		var fileUploadResult = await fileUploader.UploadDefault(request.Image, AppDirectories.Images, "WorkSamples");
 		workSample.Picture = fileUploadResult;
+		workSample.PictureAlt = request.PictureAlt;
 		await workSampleRepository.UpdateAsync(workSample);
 		return true;
 

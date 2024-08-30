@@ -6,5 +6,6 @@ public class ChangeCertificateImageCommand : IRequest<bool>
 {
 	public int CertificateId { get; set; }
     public IFormFile Image { get; set; }
+	public string ImageAlt { get; set; }
 
 }

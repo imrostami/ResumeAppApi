@@ -8,5 +8,4 @@ public class UpdateCertificateCommand : IRequest<bool>
 	public string Name { get; set; }
 	public string Caption { get; set; }
 	public string Issuer { get; set; }
-	public string ImageAlt { get; set; }
 }

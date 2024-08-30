@@ -20,8 +20,4 @@
     <ProjectReference Include="..\ServiceHost.FileUploader\ServiceHost.FileUploader.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Blogs\Commands\" />
-  </ItemGroup>
-
 </Project>

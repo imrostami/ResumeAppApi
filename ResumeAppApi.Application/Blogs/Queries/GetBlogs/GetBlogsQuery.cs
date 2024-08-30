@@ -1,5 +1,8 @@
-﻿namespace ResumeAppApi.Application.Blogs.Queries.GetBlogs;
+﻿using ResumeAppApi.Application.Blogs.Dtos;
 
-public class GetBlogsQuery
+namespace ResumeAppApi.Application.Blogs.Queries.GetBlogs;
+
+public class GetBlogsQuery : IRequest<IEnumerable<BlogDto>>
 {
+	
 }

@@ -15,6 +15,7 @@ public class ChangeInformationImageCommandHandler(IInformationRepository informa
 
 		var uploadInformationImageResult = await fileUploader.UploadDefault(request.Image, AppDirectories.Images, "UserImages");
 		information.Picture = uploadInformationImageResult;
+		information.PictureAlt = request.PictureAlt;
 
 		await informationRepository.UpdateAsync(information);
 		return true;

@@ -6,5 +6,6 @@ namespace ResumeAppApi.Application.Informations.Commands.ChangeInformationImage
 	{
        
         public IFormFile Image { get; set; }
-    }
+		public string PictureAlt { get; set; }
+	}
 }

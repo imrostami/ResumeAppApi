@@ -16,6 +16,7 @@ namespace ResumeAppApi.Application.Certificates.Commands.ChangeCertificateImage
 
 			var uploadFileResult = await fileUploader.UploadDefault(request.Image, AppDirectories.Images, "Certificates");
 			certificate.Image = uploadFileResult;
+			certificate.ImageAlt = request.ImageAlt;
 			await certificateRepository.UpdateAsync(certificate);
 
 			return true;

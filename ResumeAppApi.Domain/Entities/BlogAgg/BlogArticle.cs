@@ -8,7 +8,7 @@
 		public int CategoryId { get; set; }
         public BlogArticleCategory BlogArticleCategory { get; set; }
         public DateTime CreationTime { get; set; } = DateTime.Now;
-		public DateTime LastUpdateTime { get; set; }
+        public DateTime LastUpdateTime { get; set; } = DateTime.Now;
         public string Picture { get; set; }
         public string PircutrAlt { get; set; }
 
