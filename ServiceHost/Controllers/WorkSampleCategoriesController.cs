@@ -15,6 +15,7 @@ namespace ServiceHost.Controllers
 			
 		}
 
+		[Authorize]
 		[HttpPost("createCategroy")]
 		public async Task<IActionResult> CreateWorkSampleCategory(CreateWorkSampleCategoryCommand command)
 		{
@@ -28,6 +29,8 @@ namespace ServiceHost.Controllers
 			return BadRequest(response);
 		}
 
+
+		[Authorize]
 		[HttpPut("editCategory")]
 		public async Task<IActionResult> UpdateCategroy(UpdateWorkSampleCategoryCommand command)
 		{
@@ -42,6 +45,8 @@ namespace ServiceHost.Controllers
 
 		}
 
+
+		[Authorize]
 		[HttpDelete("deleteCategory")]
 		public async Task<IActionResult> DeleteCategroy(DeleteWorkSampleCategoryCommand command)
 		{

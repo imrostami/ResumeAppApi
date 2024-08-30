@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ResumeAppApi.Application.BlogCategories.Commands.CreateBlogCategory;
+﻿using ResumeAppApi.Application.BlogCategories.Commands.CreateBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Commands.DeleteBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Commands.UpdateBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategories;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategoryById;
+using ResumeAppApi.Application.Blogs.Commands.DeleteBlog;
+using ResumeAppApi.Application.Blogs.Commands.UpdateBlog;
+using ResumeAppApi.Application.Blogs.Commands.UpdateBlogImage;
 using ResumeAppApi.Application.Blogs.Queries.GetBlogById;
 using ResumeAppApi.Application.Blogs.Queries.GetBlogs;
 using ServiceHost.ApiResponses.Blogs;
@@ -25,6 +26,8 @@ namespace ServiceHost.Controllers
 
 		}
 
+
+
 		[HttpGet("getBlogCategory")]
 		public async Task<IActionResult> GetBlogCategory(GetBlogCategoryByIdQuery query)
 		{
@@ -37,6 +40,9 @@ namespace ServiceHost.Controllers
 			return NotFound(response);
 		}
 
+
+
+		[Authorize]
 		[HttpPost("createBlogCategory")]
 		public async Task<IActionResult> CreateBlogCategory(CreateBlogCategoryCommand command)
 		{
@@ -50,6 +56,8 @@ namespace ServiceHost.Controllers
 			
 		}
 
+
+		[Authorize]
 		[HttpDelete("deleteBlogCategory")]
 		public async Task<IActionResult> DeleteBlogCategory(DeleteBlogCategoryCommand command)
 		{
@@ -63,6 +71,8 @@ namespace ServiceHost.Controllers
 			return NotFound(response);
 		}
 
+
+		[Authorize]
 		[HttpPut("editBlogCategpry")]
 		public async Task<IActionResult> EditBlogCategory(UpdateBlogCategoryCommand command)
 		{
@@ -94,20 +104,55 @@ namespace ServiceHost.Controllers
 
 			return NotFound(response);
 		}
+
+		[Authorize]
 		[HttpPost("createBlog")]
 		public async Task<IActionResult> CreateBlog()
 		{
 			return Ok();
 		}
 
+		[HttpPatch("editBlogImage")]
+		public async Task<IActionResult> EditBlogImage(UpdateBlogImageCommand command)
+		{
+			var updateBlogImageResult = await mediator.Send(command);
+			var response = new UpdateBlogImageResponse(updateBlogImageResult);
+
+			if (response.Ok)
+				return Ok(response);
+
+			return NotFound(response);
+
+		}
+
+
+		[Authorize]
+		[HttpPut("updateBlog")]
+		public async Task<IActionResult> UpdateBlog(UpdateBlogCommand command)
+		{
+			var updateBlogResult = await mediator.Send(command);
+			var response = new UpdateBlogResponse(updateBlogResult);
+
+			if (response.Ok)
+				return Ok(response);
+
+			return NotFound(response);
+			
+		}
 
 
 
+		[Authorize]
+		[HttpDelete("deleteBlog")]
+		public async Task<IActionResult> DeleteBlog(DeleteBlogCommand command)
+		{
+			var deleteBlogResult = await mediator.Send(command);
+			var response = new DeleteBlogResponse(deleteBlogResult);
 
+			if (response.Ok)
+				return Ok(response);
 
-
-
-
-
+			return NotFound(response);
+		}
 	}
 }

@@ -13,6 +13,8 @@
 			return Ok(response);
 		}
 
+
+
 		[HttpGet("getWorkSample")]
 		public async Task<IActionResult> GetWorkSampleById(GetWorkSampleByIdQuery query)
 		{
@@ -26,6 +28,8 @@
 
 		}
 
+
+
 		[HttpGet("getCategoryWorkSamples")]
 		public async Task<IActionResult> GetCategroyWorkSamples(GetWorkSampleByCategoryIdQuery query)
 		{
@@ -38,6 +42,8 @@
 			return NotFound(response);
 		}
 
+
+		[Authorize]
 		[HttpPost("createWorkSample")]
 		public async Task<IActionResult> CreateWorkSample([FromForm] CreateWorkSampleCommand command)
 		{
@@ -51,6 +57,8 @@
 
 		}
 
+
+		[Authorize]
 		[HttpDelete("deleteWorkSample")]
 		public async Task<IActionResult> DeleteWorkSample(DeleteWorkSampleCommand command)
 		{
@@ -63,6 +71,8 @@
 			return NotFound(response);
 		}
 
+
+		[Authorize]
 		[HttpPut("changeImage")]
 		public async Task<IActionResult> ChangeImage([FromForm] ChangeWorkSampleImageCommand command)
 		{

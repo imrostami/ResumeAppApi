@@ -5,6 +5,7 @@
 [Authorize]
 public class MessagesController(IMediator mediator) : ControllerBase
 {
+	[Authorize]
 	[HttpGet("getMessages")]
 	public async Task<GetMessagesResponse> GetMessagesAsync()
 	{
@@ -13,6 +14,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
 
 	}
 
+	[Authorize]
 	[HttpGet("getUnreadMessages")]
 	public async Task<GetUnReadMessageResponse> GetUnReadMessagesAsync()
 	{
@@ -20,6 +22,8 @@ public class MessagesController(IMediator mediator) : ControllerBase
 		return new GetUnReadMessageResponse(unReadMessages);
 	}
 
+
+	[Authorize]
 	[HttpGet("getUnReadCount")]
 	public async Task<GetUnReadMessageCountResponse> GetUnReadMessageCount()
 	{
@@ -27,6 +31,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
 		return new GetUnReadMessageCountResponse(true, unReadMessageCount);
 
 	}
+
 
 	[HttpPost("createMessage")]
 	public async Task<IActionResult> CreateMessageAsync(CreateMessageCommand command)
@@ -41,6 +46,8 @@ public class MessagesController(IMediator mediator) : ControllerBase
 		return Ok(response);
 	}
 
+
+	[Authorize]
 	[HttpPatch("setMessageRead")]
 	public async Task<IActionResult> SetMessageReadAsync(ReadMessageByIdQuery command)
 	{
@@ -52,6 +59,10 @@ public class MessagesController(IMediator mediator) : ControllerBase
 
 		return BadRequest(response);
 	}
+
+
+
+	[Authorize]
 	[HttpGet("getMessage")]
 	public async Task<IActionResult> GetMessageById(GetMessageByIdQuery query)
 	{
@@ -67,6 +78,8 @@ public class MessagesController(IMediator mediator) : ControllerBase
 
 	}
 
+
+	[Authorize]
 	[HttpDelete("deleteMessage")]
 	public async Task<IActionResult> DeleteMessageAsync(RemoveMessageByIdCommand command)
 	{
