@@ -16,8 +16,6 @@ public class UpdateCertificateValidator : AbstractValidator<UpdateCertificateCom
 		   .NotEmpty()
 		   .WithMessage("نام صادر کننده گواهی الزامی است");
 
-		RuleFor(x => x.ImageAlt)
-		   .NotEmpty()
-		   .WithMessage("alt عکس الزامی است");
+		
 	}
 }

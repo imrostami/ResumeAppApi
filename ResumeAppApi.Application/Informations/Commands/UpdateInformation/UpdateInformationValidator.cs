@@ -16,10 +16,6 @@ public class UpdateInformationValidator : AbstractValidator<UpdateInformationCom
 			.NotEmpty()
 			.WithMessage("بیوگرافی وارد نشده");
 
-		RuleFor(x => x.PictureAlt)
-			.NotEmpty()
-			.WithMessage("alt عکس الزامی است");
-
 		RuleFor(x => x.Birthday)
 			.NotEmpty()
 			.WithMessage("تاریخ وارد نشده");
