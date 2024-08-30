@@ -11,6 +11,11 @@ This web service consists of **various services** for managing resume informatio
 
 <Img src="./docImages/dotnet.png" alt="dotnet" style="width:20%"/>
 
+## Swagger Screen Shot
+
+![image](https://github.com/user-attachments/assets/5c830791-77da-4f2b-be1c-02b2a45891ac)
+
+
 
 ## Clean Architecture and CQRS Pattern
 
