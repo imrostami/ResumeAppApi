@@ -1,6 +1,7 @@
 using ResumeAppApi.Infrustructre.Extentions;
 using ResumeAppApi.Application.Extentions;
 using ResumeAppApi.Domain.Entities;
+using ServiceHost.Middelwares;
 
 
 
@@ -24,6 +25,8 @@ builder.Services.AddFileUploaderService(builder.Environment.WebRootPath);
 
 var app = builder.Build();
 
+app.UseMiddleware<IdentityRouteMiddelware>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -39,6 +42,8 @@ app.MapControllers();
 app.MapGroup("api/Users").MapIdentityApi<User>();
 
 app.UseStaticFiles();
+
+
 
 
 await app.RunAsync();

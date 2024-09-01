@@ -1,4 +1,7 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
+
+
 namespace ResumeAppApi.Infrustructre.Extentions
 {
 	public static class ServiceCollectionExtentions
@@ -24,7 +27,6 @@ namespace ResumeAppApi.Infrustructre.Extentions
 				.AddScoped<IWorkSampleCategoryRepository, WorkSampleCategoryRepository>()
 				.AddScoped<IBlogArticleRepository, BlogArticleRepository>()
 				.AddScoped<IBlogArticleCategoryRepository, BlogArticleCategoryRepository>();
-
 
 			
 		}
