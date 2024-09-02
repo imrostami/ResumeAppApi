@@ -8,7 +8,7 @@ public class CreateBlogCategoryCommandHandler(IBlogArticleCategoryRepository blo
 {
 	public async Task<BlogCategoryDto?> Handle(CreateBlogCategoryCommand request, CancellationToken cancellationToken)
 	{
-		var dbCategory = blogArticleCategoryRepository.GetBy(request.CategoryName);
+		var dbCategory = await blogArticleCategoryRepository.GetBy(request.CategoryName);
 		if (dbCategory is not null)
 			return null;
 

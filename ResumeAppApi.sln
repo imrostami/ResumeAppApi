@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResumeAppApi.Infrustructre"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{6923DF04-A458-4862-9EA0-7B3388BFA53F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost.FileUploader", "ServiceHost.FileUploader\ServiceHost.FileUploader.csproj", "{302A62F9-00C5-4191-88FC-5F1070C6FFDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost.FileUploader", "ServiceHost.FileUploader\ServiceHost.FileUploader.csproj", "{302A62F9-00C5-4191-88FC-5F1070C6FFDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
