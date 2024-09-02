@@ -23,13 +23,12 @@ builder.Services.AddApplication();
 builder.Services.AddFileUploaderService(builder.Environment.WebRootPath);
 
 
-var frontendAddress = builder.Configuration.GetSection("FrontendAddress").Value;
 
 
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy("AllowFrontEndAppOrigin", builder =>
-	builder.WithOrigins(frontendAddress)
+	builder.AllowAnyOrigin()
 	.AllowAnyHeader()
 	.AllowAnyMethod());
 });
