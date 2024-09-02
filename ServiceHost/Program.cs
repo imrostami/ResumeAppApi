@@ -46,7 +46,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowFrontEndAppOrigin");
+app.UseCors();
 
 app.UseAuthorization();
 
