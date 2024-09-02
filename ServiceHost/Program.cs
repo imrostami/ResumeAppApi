@@ -23,12 +23,12 @@ builder.Services.AddApplication();
 builder.Services.AddFileUploaderService(builder.Environment.WebRootPath);
 
 
-
+var frontUrl = builder.Configuration.GetSection("FrontUrl").Value;
 
 builder.Services.AddCors(options =>
 {
 	options.AddPolicy("AllowFrontEndAppOrigin", builder =>
-	builder.AllowAnyOrigin()
+	builder.WithOrigins(frontUrl)
 	.AllowAnyHeader()
 	.AllowAnyMethod());
 });
@@ -46,7 +46,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+app.UseCors("AllowFrontEndAppOrigin");
 
 app.UseAuthorization();
 
