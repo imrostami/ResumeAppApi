@@ -24,6 +24,10 @@ public class CreateInformationValidator : AbstractValidator<CreateInformationCom
             .NotEmpty()
             .WithMessage("تاریخ وارد نشده");
 
+        RuleFor(x => x.ShortAbout)
+            .NotEmpty()
+            .WithMessage("توضیحات کوتاه وارد نشده");
+
 
         RuleFor(x => x.Languages)
             .NotEmpty()

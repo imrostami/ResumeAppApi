@@ -14,5 +14,6 @@ namespace ResumeAppApi.Application.Informations.Commands.CreateInformation
 		public string Birthday { get; set; } = default!;
 		public string Languages { get; set; } = default!;
 		public string Nationality { get; set; } = default!;
+		public string ShortAbout { get; set; } = default!;
 	}
 }

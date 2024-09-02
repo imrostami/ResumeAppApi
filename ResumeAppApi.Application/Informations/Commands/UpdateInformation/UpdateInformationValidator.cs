@@ -31,5 +31,9 @@ public class UpdateInformationValidator : AbstractValidator<UpdateInformationCom
 		RuleFor(x => x.Nationality)
 			.NotEmpty()
 			.WithMessage("ملیت وارد نشده");
+
+		RuleFor(x => x.ShortAbout)
+			.NotEmpty()
+			.WithMessage("توضیحات کوتاه وارد نشده");
 	}
 }

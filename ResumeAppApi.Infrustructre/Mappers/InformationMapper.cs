@@ -17,5 +17,6 @@ public class InformationMapper : IEntityTypeConfiguration<Information>
 		builder.Property(x => x.Address).HasMaxLength(80).IsRequired(false);
 		builder.Property(x=>x.PictureAlt).HasMaxLength(100).IsRequired(false);
 		builder.Property(x => x.Picture).IsRequired(false);
+		builder.Property(x => x.ShortAbout).IsRequired().HasMaxLength(130);
 	}
 }
