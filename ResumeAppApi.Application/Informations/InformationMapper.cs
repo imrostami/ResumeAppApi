@@ -9,7 +9,7 @@ public class InformationMapper : Profile
     public InformationMapper()
     {
         CreateMap<Information, InformationDto>()
-            .ForMember(x=>x.Id,obj=>obj.MapFrom(map=>
+            .ForMember(x => x.Id, obj => obj.MapFrom(map =>
             map.InformationId));
 
         CreateMap<CreateInformationCommand, Information>();

@@ -25,7 +25,7 @@ namespace ServiceHost.FileUploader
 
 			using var output = File.Create(saveFilePath);
 			await file.CopyToAsync(output);
-			return Path.Combine(rootDirectory,path,randomId,fileName);
+			return Path.Combine(rootDirectory,path,randomId,fileName).Replace(@"\", @"/");
 
 
 		}

@@ -8,7 +8,7 @@ public class InformationMapper : IEntityTypeConfiguration<Information>
 		builder.ToTable("Informations");
 		builder.HasKey(x => x.InformationId);
 
-		builder.Property(x => x.About).HasMaxLength(750).IsRequired();
+		builder.Property(x => x.About).HasMaxLength(3500).IsRequired();
 		builder.Property(x => x.FirstName).HasMaxLength(60).IsRequired();
 		builder.Property(x => x.LastName).HasMaxLength(100).IsRequired();
 		builder.Property(x => x.Birthday).HasMaxLength(50).IsRequired();
