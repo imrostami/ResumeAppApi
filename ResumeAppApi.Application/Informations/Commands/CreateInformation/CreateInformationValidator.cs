@@ -18,7 +18,9 @@ public class CreateInformationValidator : AbstractValidator<CreateInformationCom
 
         RuleFor(x => x.Birthday)
             .NotEmpty()
-            .WithMessage("تاریخ وارد نشده");
+            .WithMessage("تاریخ وارد نشده")
+            .Matches("^(\\d{4})\\/(0?[1-9]|1[012])\\/(0?[1-9]|[12][0-9]|3[01])$")
+            .WithMessage("تاریخ باید با فرمت XXXX/XX/XX باشد");
 
         RuleFor(x => x.ShortAbout)
             .NotEmpty()
