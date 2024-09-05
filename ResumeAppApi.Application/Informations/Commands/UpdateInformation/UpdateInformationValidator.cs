@@ -19,7 +19,7 @@ public class UpdateInformationValidator : AbstractValidator<UpdateInformationCom
 		RuleFor(x => x.Birthday)
 		   .NotEmpty()
 		   .WithMessage("تاریخ وارد نشده")
-		   .Matches("^(\\d{4})\\/(0?[1-9]|1[012])\\/(0?[1-9]|[12][0-9]|3[01])$")
+		   .Matches("^(13[0-9]{2}|14[0-9]{2})\\/(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])$")
 		   .WithMessage("تاریخ باید با فرمت XXXX/XX/XX باشد");
 
 
@@ -27,7 +27,7 @@ public class UpdateInformationValidator : AbstractValidator<UpdateInformationCom
 			.NotEmpty()
 			.WithMessage("زبان وارد نشده")
 			.Matches("(.+?)(?:,|$)")
-			.WithMessage("لطفا با پترن -,-,-,-,-  وارد کن");
+			.WithMessage("لطفا با پترن -,-,-,-,-  وارد کنید");
 
 
 		RuleFor(x => x.Nationality)
