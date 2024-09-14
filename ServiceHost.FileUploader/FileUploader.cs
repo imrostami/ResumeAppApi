@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Formats.Webp;
 
 namespace ServiceHost.FileUploader
 {
@@ -20,14 +23,18 @@ namespace ServiceHost.FileUploader
 			if (!Directory.Exists(directoryPath))
 				Directory.CreateDirectory(directoryPath);
 
-			var fileName = $"{DateTime.Now.ToString("yyyyMMddTHHmmss")}{Guid.NewGuid().ToString("N")}{Path.GetExtension(file.FileName)}";
+			var fileName = $"{DateTime.Now.ToString("yyyyMMddTHHmmss")}{Guid.NewGuid().ToString("N")}.webp";
 			var saveFilePath = Path.Combine(directoryPath, fileName);
 
-			using var output = File.Create(saveFilePath);
-			await file.CopyToAsync(output);
-			return Path.Combine(rootDirectory,path,randomId,fileName).Replace(@"\", @"/");
+			using var image = await Image.LoadAsync(file.OpenReadStream());
+			var webpEncoder = new WebpEncoder()
+			{
+				Quality = 65
+			};
 
+			await image.SaveAsync(saveFilePath, webpEncoder);
 
+			return Path.Combine(rootDirectory, path, randomId, fileName).Replace(@"\", @"/");
 		}
 	}
 }
