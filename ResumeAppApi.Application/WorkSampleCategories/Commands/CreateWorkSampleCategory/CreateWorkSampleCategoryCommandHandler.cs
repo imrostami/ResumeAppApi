@@ -9,7 +9,7 @@ public class CreateWorkSampleCategoryCommandHandler(IWorkSampleCategoryRepositor
 {
 	public async Task<WorkSampleCategoryDto?> Handle(CreateWorkSampleCategoryCommand request, CancellationToken cancellationToken)
 	{
-		var getWorkSampleResult = workSampleCategoryRepository.GetBy(request.CategoryName);
+		var getWorkSampleResult = await workSampleCategoryRepository.GetBy(request.CategoryName);
 
 		if (getWorkSampleResult is not null)
 			return null;
