@@ -11,7 +11,7 @@ public class DeleteWorkSampleCategoryCommandHandler(IWorkSampleCategoryRepositor
 			return false;
 
 
-		await workSampleCategoryRepository.UpdateAsync(workSampleCategory);
+		await workSampleCategoryRepository.DeleteAsync(workSampleCategory);
 		return true;
 	}
 }
