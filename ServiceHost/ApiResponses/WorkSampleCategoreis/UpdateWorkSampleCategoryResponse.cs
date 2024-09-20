@@ -7,6 +7,6 @@ namespace ServiceHost.ApiResponses.WorkSampleCategoreis
 		public bool Ok => ok;
 
 		public string Message => ok? ResponseMessage.Updated():
-			ResponseMessage.NotFound();
+			ResponseMessage.Duplicate();
 	}
 }
