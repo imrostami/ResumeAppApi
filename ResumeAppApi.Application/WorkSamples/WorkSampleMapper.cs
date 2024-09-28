@@ -13,8 +13,8 @@ public class WorkSampleMapper : Profile
         CreateMap<WorkSample, WorkSampleDto>()
             .ForMember(x => x.Category, obj => obj.MapFrom(map => new WorkSampleCategoryDto()
             {
-                Name = map.Name,
-                Id = map.CategoryId,
+                Name = map.WorkSampleCategory.CategoryName,
+                Id = map.WorkSampleCategory.CategoryId,
             }))
             .ForMember(x=>x.Id,obj=>obj.MapFrom(map=>
             map.SampleId)).ReverseMap();
