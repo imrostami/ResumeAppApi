@@ -35,7 +35,9 @@ public class WorkSampleRepository(AppDbContext context) : IWorkSampleRepository
 		.ToListAsync();
 
 	public async Task<WorkSample?> GetBy(int id)
-		=> await context.WorkSamples.FindAsync(id);
+		=> await context.WorkSamples
+		.Include(x => x.WorkSampleCategory)
+		.FirstOrDefaultAsync(x=>x.SampleId == id);
 
 	public async Task<WorkSample> UpdateAsync(WorkSample entity)
 	{
