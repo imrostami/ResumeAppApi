@@ -1,4 +1,6 @@
-﻿namespace ServiceHost.Controllers
+﻿using ResumeAppApi.Application.WorkSamples.Commands.UpdateWorkSample;
+
+namespace ServiceHost.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
@@ -84,6 +86,20 @@
 
 			return NotFound(response);
 
+		}
+
+		[Authorize]
+		[HttpPost("editWorkSample")]
+
+		public async Task<IActionResult> EditWorkSample(UpdateWorkSampleCommand command)
+		{
+			var editWorkSampleResult = await mediator.Send(command);
+			var response = new EditWorkSampleResponse(editWorkSampleResult);
+
+			if (response.Ok)
+				return Ok(response);
+
+			return NotFound(response);
 		}
 
 
