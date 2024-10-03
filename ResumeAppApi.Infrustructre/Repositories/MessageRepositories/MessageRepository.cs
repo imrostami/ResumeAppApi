@@ -37,7 +37,21 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
     public async Task<Message?> GetBy(int id)
         => await context.Messages.FindAsync(id);
 
-    public async Task<IEnumerable<Message>> GetUnReadMessages()
+	public async Task<long> GetMessagesCount()
+	{
+		return await context.Messages.CountAsync();
+	}
+
+	public async Task<IEnumerable<Message>> GetPagged(int pageNumber, int pageSize)
+	{
+        return await context.Messages.AsNoTracking()
+            .OrderBy(x => x.MessageId)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+	}
+
+	public async Task<IEnumerable<Message>> GetUnReadMessages()
     {
         var unReadMessages = await context.Messages
             .Where(x => !x.IsRecived)
