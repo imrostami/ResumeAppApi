@@ -45,7 +45,7 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
 	public async Task<IEnumerable<Message>> GetPagged(int pageNumber, int pageSize)
 	{
         return await context.Messages.AsNoTracking()
-            .OrderBy(x => x.MessageId)
+            .OrderBy(x => x.IsRecived)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
