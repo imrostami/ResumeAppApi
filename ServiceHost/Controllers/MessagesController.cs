@@ -2,10 +2,10 @@
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize]
+[Authorize]
 public class MessagesController(IMediator mediator) : ControllerBase
 {
-	//[Authorize]
+	[Authorize]
 	[HttpPost("getMessages")]
 	public async Task<GetMessagesResponse> GetMessagesAsync(GetMessagesQuery query)
 	{
