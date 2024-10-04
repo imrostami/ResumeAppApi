@@ -28,7 +28,13 @@ public class MessageMapper : Profile
 
 
 				.ForMember(x => x.Recived, obj =>
-				obj.MapFrom(map => map.IsRecived));
+				obj.MapFrom(map => map.IsRecived))
+
+				.ForMember(x => x.FirstName, obj =>
+				obj.MapFrom(map => map.SenderFirstName))
+
+				.ForMember(x => x.LastName, obj =>
+				obj.MapFrom(map => map.SenderLastName));
 
 
 
