@@ -10,6 +10,9 @@ public class MessagesController(IMediator mediator) : ControllerBase
 	public async Task<GetMessagesResponse> GetMessagesAsync(GetMessagesQuery query)
 	{
 		var messages = await mediator.Send(query);
+		messages.Messages = messages.Messages.OrderBy(x => x.Recived);
+
+
 		return new GetMessagesResponse(true, messages);
 
 	}
