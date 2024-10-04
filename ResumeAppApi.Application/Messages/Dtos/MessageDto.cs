@@ -11,6 +11,8 @@ public class MessageDto
 	public string ShortDateTime {  get; set; }
     public string LongDate { get; set; }
 
+	public bool Recived { get; set; }
+
 	
 
 }

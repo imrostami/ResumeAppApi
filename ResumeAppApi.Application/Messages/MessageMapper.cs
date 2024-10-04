@@ -24,7 +24,11 @@ public class MessageMapper : Profile
 
 				.ForMember(x => x.LongDate, obj =>
 				obj.MapFrom(map => new PersianDateTime(map.CreationTime).
-				ToLongDateString()));
+				ToLongDateString()))
+
+
+				.ForMember(x => x.Recived, obj =>
+				obj.MapFrom(map => map.IsRecived));
 
 
 
