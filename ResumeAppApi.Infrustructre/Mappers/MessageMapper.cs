@@ -23,6 +23,17 @@ namespace ResumeAppApi.Infrustructre.Mappers
 			builder.Property(x => x.Body) 
 				.IsRequired()
 				.HasMaxLength(1200);
+
+			builder.Property(x => x.TopicId)
+				.IsRequired(false)
+				.HasMaxLength(300);
+
+
+			
+			builder.HasMany(x => x.MessageReplies)
+				.WithOne(x=>x.Message)
+				.HasForeignKey(x=>x.MessageId)
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

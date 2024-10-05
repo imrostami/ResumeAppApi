@@ -11,8 +11,8 @@ using ResumeAppApi.Infrustructre.Persistense;
 namespace ResumeAppApi.Infrustructre.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241005112359_add_SesstionId_to_Message")]
-    partial class add_SesstionId_to_Message
+    [Migration("20241005133211_Is_Owner_in_reply")]
+    partial class Is_Owner_in_reply
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -236,17 +236,41 @@ namespace ResumeAppApi.Infrustructre.Migrations
                         .HasMaxLength(120)
                         .HasColumnType("varchar(120)");
 
-                    b.Property<string>("SesstionId")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("TopicId")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
+
                     b.HasKey("MessageId");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("ResumeAppApi.Domain.Entities.MessageAgg.MessageReply", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsOwner")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReplyBody")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("MessageReplies", (string)null);
                 });
 
             modelBuilder.Entity("ResumeAppApi.Domain.Entities.PortfolioAgg.Certificate", b =>
@@ -615,6 +639,17 @@ namespace ResumeAppApi.Infrustructre.Migrations
                     b.Navigation("BlogArticleCategory");
                 });
 
+            modelBuilder.Entity("ResumeAppApi.Domain.Entities.MessageAgg.MessageReply", b =>
+                {
+                    b.HasOne("ResumeAppApi.Domain.Entities.MessageAgg.Message", "Message")
+                        .WithMany("MessageReplies")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Message");
+                });
+
             modelBuilder.Entity("ResumeAppApi.Domain.Entities.WorkSampleAgg.WorkSample", b =>
                 {
                     b.HasOne("ResumeAppApi.Domain.Entities.WorkSampleAgg.WorkSampleCategory", "WorkSampleCategory")
@@ -624,6 +659,11 @@ namespace ResumeAppApi.Infrustructre.Migrations
                         .IsRequired();
 
                     b.Navigation("WorkSampleCategory");
+                });
+
+            modelBuilder.Entity("ResumeAppApi.Domain.Entities.MessageAgg.Message", b =>
+                {
+                    b.Navigation("MessageReplies");
                 });
 #pragma warning restore 612, 618
         }

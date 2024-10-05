@@ -10,8 +10,8 @@ public class CreateMessageCommandHandler(
 		
 		message.CreationTime = DateTime.Now;
 
-		if (message.SesstionId is null)
-			message.SesstionId = Guid.NewGuid().ToString("N");
+		if(message.TopicId is null)
+			message.TopicId = Guid.NewGuid().ToString("N");
 
 		var createdMessage = await messageRepository.CreateAsync(message);
 

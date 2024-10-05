@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ResumeAppApi.Infrustructre.Persistense;
 
@@ -10,9 +11,11 @@ using ResumeAppApi.Infrustructre.Persistense;
 namespace ResumeAppApi.Infrustructre.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241005130150_add_topicId_to_Messages")]
+    partial class add_topicId_to_Messages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,29 +248,6 @@ namespace ResumeAppApi.Infrustructre.Migrations
                     b.HasKey("MessageId");
 
                     b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("ResumeAppApi.Domain.Entities.MessageAgg.MessageReply", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsOwner")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("MessageId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReplyBody")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MessageId");
-
-                    b.ToTable("MessageReplies", (string)null);
                 });
 
             modelBuilder.Entity("ResumeAppApi.Domain.Entities.PortfolioAgg.Certificate", b =>
@@ -636,17 +616,6 @@ namespace ResumeAppApi.Infrustructre.Migrations
                     b.Navigation("BlogArticleCategory");
                 });
 
-            modelBuilder.Entity("ResumeAppApi.Domain.Entities.MessageAgg.MessageReply", b =>
-                {
-                    b.HasOne("ResumeAppApi.Domain.Entities.MessageAgg.Message", "Message")
-                        .WithMany("MessageReplies")
-                        .HasForeignKey("MessageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Message");
-                });
-
             modelBuilder.Entity("ResumeAppApi.Domain.Entities.WorkSampleAgg.WorkSample", b =>
                 {
                     b.HasOne("ResumeAppApi.Domain.Entities.WorkSampleAgg.WorkSampleCategory", "WorkSampleCategory")
@@ -656,11 +625,6 @@ namespace ResumeAppApi.Infrustructre.Migrations
                         .IsRequired();
 
                     b.Navigation("WorkSampleCategory");
-                });
-
-            modelBuilder.Entity("ResumeAppApi.Domain.Entities.MessageAgg.Message", b =>
-                {
-                    b.Navigation("MessageReplies");
                 });
 #pragma warning restore 612, 618
         }

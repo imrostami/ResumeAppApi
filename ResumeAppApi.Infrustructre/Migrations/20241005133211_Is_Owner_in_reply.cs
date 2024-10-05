@@ -5,24 +5,25 @@
 namespace ResumeAppApi.Infrustructre.Migrations
 {
     /// <inheritdoc />
-    public partial class add_SesstionId_to_Message : Migration
+    public partial class Is_Owner_in_reply : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "SesstionId",
-                table: "Messages",
-                type: "longtext",
-                nullable: true);
+            migrationBuilder.AddColumn<bool>(
+                name: "IsOwner",
+                table: "MessageReplies",
+                type: "tinyint(1)",
+                nullable: false,
+                defaultValue: false);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "SesstionId",
-                table: "Messages");
+                name: "IsOwner",
+                table: "MessageReplies");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ResumeAppApi.Infrustructre.Persistense;
 
@@ -10,9 +11,11 @@ using ResumeAppApi.Infrustructre.Persistense;
 namespace ResumeAppApi.Infrustructre.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241005132427_ADD_Message_Replies_to_Message")]
+    partial class ADD_Message_Replies_to_Message
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -252,9 +255,6 @@ namespace ResumeAppApi.Infrustructre.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsOwner")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("MessageId")
                         .HasColumnType("int");

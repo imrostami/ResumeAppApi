@@ -3,12 +3,12 @@ using ServiceHost.Responses;
 
 namespace ServiceHost.ApiResponses.Messages
 {
-	public class CreateMessageResponse(bool ok,string message,int messageId) : IResponse
+	public class CreateMessageResponse(bool ok,string message,MessageDto messageDto) : IResponse
 	{
 
 		public bool Ok { get; } = ok;
 
-		public object Result { get; } = messageId;
+		public object Result { get; } = messageDto;
 
 		public string Message => message;
 	}

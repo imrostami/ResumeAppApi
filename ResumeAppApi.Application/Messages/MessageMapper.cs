@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MD.PersianDateTime.Standard;
 using ResumeAppApi.Application.Messages.Commands.CreateMessage;
+using ResumeAppApi.Application.Messages.Commands.CreateMessageReply;
 using ResumeAppApi.Application.Messages.Dtos;
 using ResumeAppApi.Domain.Entities.MessageAgg;
 
@@ -34,11 +35,24 @@ public class MessageMapper : Profile
 				obj.MapFrom(map => map.SenderFirstName))
 
 				.ForMember(x => x.LastName, obj =>
-				obj.MapFrom(map => map.SenderLastName));
+				obj.MapFrom(map => map.SenderLastName))
+				
+				.ForMember(x=>x.Replies,obj=>
+				obj.MapFrom(x=>x.MessageReplies));
 
 
 
 		CreateMap<CreateMessageCommand, Message>();
+		CreateMap<CreateMessageReplyCommand, MessageReply>();
 		CreateMap<Message, UnReadMessageDto>();
+
+
+		CreateMap<MessageReply, MessageReplyDto>()
+			.ForMember(x => x.Text, obj =>
+			obj.MapFrom(map => map.ReplyBody))
+
+			.ForMember(x => x.TopicId, obj => 
+			obj.MapFrom(map=>map.Message.TopicId))
+			.ReverseMap();
 	}
 }

@@ -42,7 +42,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
 		var response = new CreateMessageResponse(
 			ok: true,
 			message: "پیام با موفقیت ثبت شد",
-			createdMessage.MessageId);
+			createdMessage);
 
 		return Ok(response);
 	}
