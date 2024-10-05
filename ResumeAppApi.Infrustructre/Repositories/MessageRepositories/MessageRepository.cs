@@ -37,6 +37,21 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
     public async Task<Message?> GetBy(int id)
         => await context.Messages.FindAsync(id);
 
+	public async Task<Message?> GetByTopicId(string topicId)
+	{
+        var message = await context.Messages
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.TopicId == topicId);
+
+        if (message!.MessageReplies.Any())
+            message.MessageReplies = message.MessageReplies
+                .OrderBy(x => x.ReplyDate)
+                .ToList();
+
+
+        return message;
+	}
+
 	public async Task<long> GetMessagesCount()
 	{
 		return await context.Messages.CountAsync();

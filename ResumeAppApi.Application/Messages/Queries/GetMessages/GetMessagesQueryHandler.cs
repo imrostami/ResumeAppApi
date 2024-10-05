@@ -11,7 +11,6 @@ public class GetMessagesQueryHandler (IMessageRepository messageRepository,
 
 		var mappedMessages = mapper.Map<IEnumerable<MessageDto>>(messages);
 
-		
 
 		return new MessagePaggedDto()
 		{

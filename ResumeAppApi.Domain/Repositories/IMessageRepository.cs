@@ -6,6 +6,7 @@ namespace ResumeAppApi.Domain.Repositories
 	public interface IMessageRepository:IRepositoryBase<Message>
 	{
 		public Task<IEnumerable<Message>> GetUnReadMessages();
+		public Task<Message> GetByTopicId(string topicId);
 		public Task<long> GetUnReadMessagesCount();
 		public Task<long> GetMessagesCount();
 		public Task<IEnumerable<Message>> GetPagged(int pageNumber, int pageSize);
