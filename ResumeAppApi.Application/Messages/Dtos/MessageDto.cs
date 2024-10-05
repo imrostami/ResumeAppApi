@@ -11,8 +11,8 @@ public class MessageDto
 	public string CreationTime { get; set; }
 	public string ShortDateTime {  get; set; }
     public string LongDate { get; set; }
-
-	public bool Recived { get; set; }
+    public string? SesstionId { get; set; }
+    public bool Recived { get; set; }
 
 	
 

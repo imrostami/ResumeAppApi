@@ -11,5 +11,6 @@
         public string Body { get; set; } = default!;
         public bool IsRecived { get; set; } = default!;
         public DateTime CreationTime { get; set; }
-	}
+        public string? SesstionId { get; set; }
+    }
 }

@@ -7,6 +7,7 @@ public class CreateMessageCommand : IRequest<MessageDto>
 	public string SenderFirstName { get; set; }
 	public string SenderLastName { get; set; }
 	public string Body { get; set; }
+    public string? SesstionId { get; set; }
 
 
 }
