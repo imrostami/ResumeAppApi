@@ -41,6 +41,7 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
 	{
         var message = await context.Messages
             .AsNoTracking()
+            .Include(x=>x.MessageReplies)
             .FirstOrDefaultAsync(x => x.TopicId == topicId);
 
         if (message!.MessageReplies.Any())

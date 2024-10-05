@@ -1,4 +1,5 @@
 ﻿using ResumeAppApi.Application.Messages.Commands.CreateMessageReply;
+using ResumeAppApi.Application.Messages.Queries.GetMessageTopicReplies;
 
 namespace ServiceHost.Controllers;
 
@@ -99,6 +100,19 @@ public class MessagesController(IMediator mediator) : ControllerBase
 	{
 		var result = await mediator.Send(command);
 		var response = new ReplyMessageResponse(result);
+
+		if (response.Ok)
+			return Ok(response);
+
+		return NotFound(response);
+
+	}
+
+	[HttpGet("getTopicReplies")]
+	public async Task<IActionResult> GetTopicReplies(GetMessageTopicRepliesQuery query)
+	{
+		var result = await mediator.Send(query);
+		var response = new GetMessageRepliesReponse(result);
 
 		if (response.Ok)
 			return Ok(response);
