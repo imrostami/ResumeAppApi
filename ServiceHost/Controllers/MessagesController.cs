@@ -108,7 +108,7 @@ public class MessagesController(IMediator mediator) : ControllerBase
 
 	}
 
-	[HttpGet("getTopicReplies")]
+	[HttpPost("getTopicReplies")]
 	public async Task<IActionResult> GetTopicReplies(GetMessageTopicRepliesQuery query)
 	{
 		var result = await mediator.Send(query);

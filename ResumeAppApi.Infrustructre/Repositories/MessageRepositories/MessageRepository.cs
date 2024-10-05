@@ -44,12 +44,6 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
             .Include(x=>x.MessageReplies)
             .FirstOrDefaultAsync(x => x.TopicId == topicId);
 
-        if (message!.MessageReplies.Any())
-            message.MessageReplies = message.MessageReplies
-                .OrderBy(x => x.ReplyDate)
-                .ToList();
-
-
         return message;
 	}
 
