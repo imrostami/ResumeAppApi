@@ -1,4 +1,6 @@
-﻿namespace ServiceHost.Controllers;
+﻿using ResumeAppApi.Application.Messages.Commands.CreateMessageReply;
+
+namespace ServiceHost.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -90,5 +92,18 @@ public class MessagesController(IMediator mediator) : ControllerBase
 		if (response.Ok)
 			return Ok(response);
 		return NotFound(response);
+	}
+
+	[HttpPost("createMessageReply")]
+	public async Task<IActionResult> CreateMessageReply(CreateMessageReplyCommand command)
+	{
+		var result = await mediator.Send(command);
+		var response = new ReplyMessageResponse(result);
+
+		if (response.Ok)
+			return Ok(response);
+
+		return NotFound(response);
+
 	}
 }

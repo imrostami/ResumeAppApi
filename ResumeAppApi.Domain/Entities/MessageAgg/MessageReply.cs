@@ -10,4 +10,6 @@ public class MessageReply
 	public Message Message { get; set; }
 
 	public string ReplyBody { get; set; }
+
+    public DateTime ReplyDate { get; set; }
 }

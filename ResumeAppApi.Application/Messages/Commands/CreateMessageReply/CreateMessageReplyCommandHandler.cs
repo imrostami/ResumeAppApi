@@ -14,6 +14,10 @@ public class CreateMessageReplyCommandHandler(IMapper mapper,
 
 		var mappedReply = mapper.Map<MessageReply>(request);
 
+		mappedReply.ReplyDate = DateTime.Now;
+		
+		mappedReply.Message = message;
+
 		message.MessageReplies.Add(mappedReply);
 
 		await messageRepository.UpdateAsync(message);

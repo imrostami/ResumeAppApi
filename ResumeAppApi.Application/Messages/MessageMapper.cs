@@ -36,14 +36,13 @@ public class MessageMapper : Profile
 
 				.ForMember(x => x.LastName, obj =>
 				obj.MapFrom(map => map.SenderLastName))
-				
-				.ForMember(x=>x.Replies,obj=>
-				obj.MapFrom(x=>x.MessageReplies));
+
+				.ForMember(x => x.Replies, obj =>
+				obj.MapFrom(x => x.MessageReplies));
 
 
 
 		CreateMap<CreateMessageCommand, Message>();
-		CreateMap<CreateMessageReplyCommand, MessageReply>();
 		CreateMap<Message, UnReadMessageDto>();
 
 
@@ -51,8 +50,30 @@ public class MessageMapper : Profile
 			.ForMember(x => x.Text, obj =>
 			obj.MapFrom(map => map.ReplyBody))
 
-			.ForMember(x => x.TopicId, obj => 
-			obj.MapFrom(map=>map.Message.TopicId))
+			.ForMember(x => x.CreationTime, src => src.
+				MapFrom(map => new PersianDateTime(map.ReplyDate)
+				.ToShortDateString()))
+
+
+			   .ForMember(x => x.ShortDateTime, obj =>
+				obj.MapFrom(map => new PersianDateTime(map.ReplyDate)
+				.ToShortDateTimeString()))
+
+
+				.ForMember(x => x.LongDate, obj =>
+				obj.MapFrom(map => new PersianDateTime(map.ReplyDate).
+				ToLongDateString()))
+
+			.ForMember(x => x.TopicId, obj =>
+			obj.MapFrom(map => map.Message.TopicId))
 			.ReverseMap();
+
+
+
+
+		CreateMap<CreateMessageReplyCommand, MessageReply>()
+
+			.ForMember(x => x.ReplyBody, obj =>
+			obj.MapFrom(map => map.Text));
 	}
 }
