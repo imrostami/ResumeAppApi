@@ -6,8 +6,12 @@ public class GetMessageTopicRepliesQueryHandler(IMapper mapper,IMessageRepositor
 	public async Task<List<MessageReplyDto>> Handle(GetMessageTopicRepliesQuery request, CancellationToken cancellationToken)
 	{
 		var messageReplies = await messageRepository.GetByTopicId(request.TopicId);
-		var mappedReplies = mapper.Map<List<MessageReplyDto>>(messageReplies.MessageReplies);
-	
-		return mappedReplies;
+		if(messageReplies is not null)
+		{
+			var mappedReplies = mapper.Map<List<MessageReplyDto>>(messageReplies.MessageReplies);
+			return mappedReplies;
+		}
+
+		return null;
 	}
 }

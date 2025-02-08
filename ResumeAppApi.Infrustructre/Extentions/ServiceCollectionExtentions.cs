@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
+using ResumeAppApi.Infrustructre.Repositories.ContentStorageRepsitories;
 
 
 namespace ResumeAppApi.Infrustructre.Extentions
@@ -26,7 +27,8 @@ namespace ResumeAppApi.Infrustructre.Extentions
 				.AddScoped<IWorkSampleRepository, WorkSampleRepository>()
 				.AddScoped<IWorkSampleCategoryRepository, WorkSampleCategoryRepository>()
 				.AddScoped<IBlogArticleRepository, BlogArticleRepository>()
-				.AddScoped<IBlogArticleCategoryRepository, BlogArticleCategoryRepository>();
+				.AddScoped<IBlogArticleCategoryRepository, BlogArticleCategoryRepository>()
+				.AddScoped<IContentStorageRepository, ContentStorageRepository>();
 
 			
 		}

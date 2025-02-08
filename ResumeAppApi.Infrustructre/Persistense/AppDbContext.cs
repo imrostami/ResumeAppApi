@@ -1,4 +1,6 @@
 ﻿
+using ResumeAppApi.Domain.Entities.ContentStorageAgg;
+
 namespace ResumeAppApi.Infrustructre.Persistense;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<User>(options)
@@ -15,6 +17,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbCo
     public DbSet<BlogArticle> BlogArticles { get; set; }
     public DbSet<BlogArticleCategory> BlogArticleCategories { get; set; }
 
+    public DbSet<ContentStorage> ContentStorages { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
 	{
