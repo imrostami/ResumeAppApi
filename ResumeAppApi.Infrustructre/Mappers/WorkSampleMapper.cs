@@ -22,5 +22,13 @@ public class WorkSampleMapper : IEntityTypeConfiguration<WorkSample>
 		builder.HasOne(x => x.WorkSampleCategory)
 			.WithMany()
 			.HasForeignKey(x=>x.CategoryId);
+
+		builder.Property(x => x.Icon).IsRequired();
+
+		builder.Property(x => x.ShortDescription)
+			.IsRequired()
+			.HasMaxLength(200);
+
+		
 	}
 }

@@ -9,5 +9,11 @@ public class UpdateWorkSampleValidator : AbstractValidator<UpdateWorkSampleComma
 
 		RuleFor(x => x.Description).NotEmpty()
 			.WithMessage("توضیحات وارد نشده");
+
+		RuleFor(x => x.ShortDescription)
+		   .NotEmpty()
+		   .WithMessage("توضیحات کوتاه الزامی است")
+		   .MaximumLength(200)
+		   .WithMessage("حداکثر مجاز 200 کاراکتر است");
 	}
 }

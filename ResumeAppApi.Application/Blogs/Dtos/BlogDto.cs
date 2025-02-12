@@ -9,7 +9,7 @@ public class BlogDto
 	public string Title { get; set; }
 	public string Body { get; set; }
 	public int CategoryId { get; set; }
-	public BlogCategoryDto Category { get; set; }
+	public string CategoryName { get; set; }
 	public string CreationTime { get; set; }
     public string CreationTimeLongDate { get; set; }
     public string LastUpdateTime { get; set; }

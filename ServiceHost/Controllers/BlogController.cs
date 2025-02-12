@@ -3,6 +3,7 @@ using ResumeAppApi.Application.BlogCategories.Commands.DeleteBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Commands.UpdateBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategories;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategoryById;
+using ResumeAppApi.Application.Blogs.Commands.CreateBlog;
 using ResumeAppApi.Application.Blogs.Commands.DeleteBlog;
 using ResumeAppApi.Application.Blogs.Commands.UpdateBlog;
 using ResumeAppApi.Application.Blogs.Commands.UpdateBlogImage;
@@ -107,9 +108,15 @@ namespace ServiceHost.Controllers
 
 		[Authorize]
 		[HttpPost("createBlog")]
-		public async Task<IActionResult> CreateBlog()
+		public async Task<IActionResult> CreateBlog(CreateBlogCommand command)
 		{
-			return Ok();
+			var createPostResult = await mediator.Send(command);
+			var response = new CreateBlogResponse(createPostResult);
+
+			if (response.Ok)
+				return Ok(response);
+
+			return BadRequest(response);
 		}
 
 		[HttpPatch("editBlogImage")]

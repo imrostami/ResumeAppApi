@@ -3,6 +3,10 @@ namespace ResumeAppApi.Infrustructre.Repositories.BlogRepositories;
 
 public class BlogArticleRepository(AppDbContext context) : IBlogArticleRepository
 {
+	public async Task<bool> ArticleExistBy(string title)
+		=> await context.BlogArticles
+		.AnyAsync(x => x.Title == title);
+
 	public async Task<BlogArticle> CreateAsync(BlogArticle entity)
 	{
 		context.BlogArticles.Add(entity);
@@ -31,11 +35,14 @@ public class BlogArticleRepository(AppDbContext context) : IBlogArticleRepositor
 	}
 
 	public async Task<IEnumerable<BlogArticle>> GetAll()
-		=> await context.BlogArticles.ToListAsync();
+		=> await context.BlogArticles.Include(x => x.BlogArticleCategory)
+		.OrderByDescending(x=>x.CreationTime)
+		.ToListAsync();
 
 	public List<BlogArticle> GetArticlesBy(string categoryName)
 	{
 		var articles = context.BlogArticles
+			.Include(x => x.BlogArticleCategory)
 			.Where(x => x.BlogArticleCategory.CategoryName == categoryName)
 			.ToList();
 
@@ -45,6 +52,7 @@ public class BlogArticleRepository(AppDbContext context) : IBlogArticleRepositor
 	public List<BlogArticle> GetArticlesBy(int categoryId)
 	{
 		var articles = context.BlogArticles
+			.Include(x => x.BlogArticleCategory)
 			.Where(x => x.BlogArticleCategory.CategoryId == categoryId)
 			.ToList();
 
@@ -52,7 +60,8 @@ public class BlogArticleRepository(AppDbContext context) : IBlogArticleRepositor
 	}
 
 	public async Task<BlogArticle?> GetBy(int id)
-		=> await context.BlogArticles.FindAsync(id);
+		=> await context.BlogArticles
+		.FindAsync(id);
 
 	public async Task<BlogArticle> UpdateAsync(BlogArticle entity)
 	{

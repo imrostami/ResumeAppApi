@@ -1,4 +1,6 @@
-﻿using ResumeAppApi.Application.WorkSamples.Commands.UpdateWorkSample;
+﻿using ResumeAppApi.Application.WorkSamples.Commands.ChangeWorkSampleIcon;
+using ResumeAppApi.Application.WorkSamples.Commands.UpdateWorkSample;
+using ResumeAppApi.Application.WorkSamples.Queries.GetPinnedWorkSamples;
 
 namespace ServiceHost.Controllers
 {
@@ -102,11 +104,28 @@ namespace ServiceHost.Controllers
 			return NotFound(response);
 		}
 
+		[Authorize]
+		[HttpPut("editWorkSampleIcon")]
+		public async Task<IActionResult> EditWorkSampleIcon([FromForm] ChangeWorkSampleIconCommand command)
+		{
+			var changeImageResult = await mediator.Send(command);
+			var response = new ChangeImageResponse(changeImageResult);
+
+			if (response.Ok)
+				return Ok(response);
+
+			return NotFound(response);
+		}
 
 		
-
-
-
+		[HttpGet("getPinnedWorks")]
+		public async Task<IActionResult> GetPinnedWorks()
+		{
+			var pinnedWorks = await mediator.Send(new GetPinnedWorkSamplesQuery());
+			var response = new GetWorkSamplesResponse(pinnedWorks);
+			return Ok(response);
+		}
+		
 
 	}
 }

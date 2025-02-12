@@ -39,6 +39,10 @@ public class WorkSampleRepository(AppDbContext context) : IWorkSampleRepository
 		.Include(x => x.WorkSampleCategory)
 		.FirstOrDefaultAsync(x=>x.SampleId == id);
 
+	public async Task<IEnumerable<WorkSample>> GetPinnedWorkSamples()
+		=> await context.WorkSamples.Where(x => x.IsPinned)
+			.ToListAsync();
+
 	public async Task<WorkSample> UpdateAsync(WorkSample entity)
 	{
 		context.WorkSamples.Update(entity);

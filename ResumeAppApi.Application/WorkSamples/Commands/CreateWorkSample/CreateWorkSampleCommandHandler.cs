@@ -15,8 +15,11 @@ public class CreateWorkSampleCommandHandler(IWorkSampleRepository workSampleRepo
 
 
 		var workSampleImageUploadResult = await fileUploader.UploadDefault(request.Picture, AppDirectories.Images, "WorkSamples");
+		var workSampleIconUploadResult = await fileUploader.UploadDefault(request.Icon, AppDirectories.Images, "WorkSampleIcons");
+		
 		var mappedWorkSample = mapper.Map<WorkSample>(request);
 		mappedWorkSample.Picture = workSampleImageUploadResult;
+		mappedWorkSample.Icon = workSampleIconUploadResult;
 
 		var createWorkSampleResult = await workSampleRepository.CreateAsync(mappedWorkSample);
 

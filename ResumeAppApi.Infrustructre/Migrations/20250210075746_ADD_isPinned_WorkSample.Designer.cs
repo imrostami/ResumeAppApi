@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ResumeAppApi.Infrustructre.Persistense;
 
@@ -10,9 +11,11 @@ using ResumeAppApi.Infrustructre.Persistense;
 namespace ResumeAppApi.Infrustructre.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250210075746_ADD_isPinned_WorkSample")]
+    partial class ADD_isPinned_WorkSample
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -580,14 +583,6 @@ namespace ResumeAppApi.Infrustructre.Migrations
                     b.Property<string>("PictureAlt")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ShortDescription")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("longtext");
 
                     b.HasKey("SampleId");
 

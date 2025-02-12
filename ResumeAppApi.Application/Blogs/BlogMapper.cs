@@ -1,5 +1,6 @@
 ﻿using MD.PersianDateTime.Standard;
 using ResumeAppApi.Application.Blogs.Commands.CreateBlog;
+using ResumeAppApi.Application.Blogs.Commands.UpdateBlog;
 using ResumeAppApi.Application.Blogs.Dtos;
 using ResumeAppApi.Domain.Entities.BlogAgg;
 
@@ -11,11 +12,12 @@ public class BlogMapper : Profile
     {
         CreateMap<BlogArticle, BlogDto>()
 
-            .ForMember(x => x.Category, obj =>
-            obj.MapFrom(map => map.BlogArticleCategory))
+            .ForMember(x => x.CategoryName, obj =>
+            obj.MapFrom(map => map.BlogArticleCategory.CategoryName))
 
             .ForMember(x => x.Id, obj => obj
             .MapFrom(map => map.ArticleId))
+
 
             .ForMember(x => x.CreationTime, obj =>
             obj.MapFrom(x => new PersianDateTime(x.CreationTime).ToShortDateString()))
@@ -33,6 +35,8 @@ public class BlogMapper : Profile
 
 
         CreateMap<CreateBlogCommand, BlogArticle>().ReverseMap();
+        CreateMap<UpdateBlogCommand, BlogArticle>()
+            .ReverseMap();
 
 	}
 }

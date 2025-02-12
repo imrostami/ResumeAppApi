@@ -6,17 +6,20 @@ namespace ResumeAppApi.Application.Blogs.Commands.CreateBlog;
 public class CreateBlogCommandHandler(IBlogArticleRepository blogArticleRepository,
 	IMapper mapper , IFileUploader fileUploader) : IRequestHandler<CreateBlogCommand, BlogDto>
 {
-	public async Task<BlogDto> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
+	public async Task<BlogDto?> Handle(CreateBlogCommand request, CancellationToken cancellationToken)
 	{
+		var blogExist = await blogArticleRepository.ArticleExistBy(request.Title);
+
+		if (blogExist)
+			return null;
+
 		var blog = mapper.Map<BlogArticle>(request);
-		var blogPicutreUploadResult = await fileUploader.UploadDefault(request.Picture,AppDirectories.Images,"BlogImages");
+		var blogPicutreUploadResult = await fileUploader.UploadDefault(request.Picture, AppDirectories.Images, "BlogImages");
 		blog.Picture = blogPicutreUploadResult;
 
 		var createBlogResult = await blogArticleRepository.CreateAsync(blog);
 
 
 		return mapper.Map<BlogDto>(createBlogResult);
-
-
 	}
 }

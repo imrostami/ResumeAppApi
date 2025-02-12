@@ -5,4 +5,5 @@ namespace ResumeAppApi.Domain.Repositories;
 
 public interface IWorkSampleRepository : IRepositoryBase<WorkSample>
 {
+	Task<IEnumerable<WorkSample>> GetPinnedWorkSamples();
 }

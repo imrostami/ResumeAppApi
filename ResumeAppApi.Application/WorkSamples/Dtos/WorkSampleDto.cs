@@ -13,4 +13,8 @@ public class WorkSampleDto
 	public string Description { get; set; } = default!;
 	public string Picture { get; set; } = default!;
 	public string PictureAlt { get; set; } = default!;
+	public string Icon { get; set; }
+	public bool IsPinned { get; set; }
+	public string ShortDescription { get; set; }
+	public string? Url { get; set; }
 }

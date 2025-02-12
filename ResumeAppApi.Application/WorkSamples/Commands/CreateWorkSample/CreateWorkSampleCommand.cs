@@ -10,4 +10,7 @@ public class CreateWorkSampleCommand : IRequest<WorkSampleDto>
 	public string Description { get; set; } = default!;
 	public IFormFile Picture { get; set; } = default!;
 	public string PictureAlt { get; set; } = default!;
+	public IFormFile Icon { get; set; }
+	public string ShortDescription { get; set; }
+	public string? Url { get; set; }
 }

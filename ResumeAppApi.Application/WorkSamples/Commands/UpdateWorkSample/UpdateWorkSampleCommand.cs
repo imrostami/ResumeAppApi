@@ -8,4 +8,7 @@ public class UpdateWorkSampleCommand : IRequest<bool>
     public string Name { get; set; } = default!;
 	public int CategoryId { get; set; } = default!;
 	public string Description { get; set; } = default!;
+	public bool IsPinned { get; set; }
+	public string ShortDescription { get; set; }
+	public string? Url { get; set; }
 }
