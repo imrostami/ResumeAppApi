@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ServiceHost.FileUploader\ServiceHost.FileUploader.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\css\" />
+  </ItemGroup>
+
 </Project>

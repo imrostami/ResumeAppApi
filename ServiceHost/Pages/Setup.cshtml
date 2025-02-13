@@ -1,0 +1,141 @@
+﻿@page
+@model ServiceHost.Pages.SetupModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+	<title>رزومه یار - راه اندازی اولیه</title>
+	<link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-6 col-lg-5 col-md-7 col-sm-9">
+					<div class="card border shadow-xl my-5">
+						<div class="card-body p-5">
+							<h1 class="fs-4 card-title fw-bold mb-4">راه اندازی اولیه</h1>
+							<form novalidate="" method="POST" class="needs-validation row" autocomplete="off" action="" enctype="multipart/form-data" >
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">ایمیل</label>
+									<input asp-for="Email" type="email" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										ایمیل وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">نام کاربری</label>
+									<input asp-for="Username" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										نام کاربری وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">رمزعبور</label>
+									<input asp-for="Password" type="password" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										رمز عبور وارد نشده
+									</div>
+								</div>
+
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">نام</label>
+									<input asp-for="FirstName" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										نام وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">نام خانوادگی</label>
+									<input asp-for="LastName" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										نام خانوادگی وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">توضیحات کوتاه</label>
+									<input asp-for="ShortAbout" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										توضیحات کوتاه وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">تاریخ تولد</label>
+									<input asp-for="Birthday" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										تاریخ تولد وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-6">
+									<label class="mb-2 text-muted" for="name">زبان های گفتاری</label>
+									<input asp-for="Languages" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										گفتار ها وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-lg-12">
+									<label class="mb-2 text-muted" for="name">ملیت</label>
+									<input asp-for="Nationality" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										ملیت وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-12">
+									<label class="mb-2 text-muted" for="name">آدرس محل سکونت</label>
+									<input asp-for="Address" type="text" class="form-control" required autofocus>
+									<div class="invalid-feedback">
+										آدرس محل سکونت وارد نشده
+									</div>
+								</div>
+
+								<div class="mb-3 col-12">
+									<label class="mb-2 text-muted" for="name">توضیحات تکمیلی</label>
+									<textarea asp-for="About" type="text" class="form-control d-block" rows="8" required autofocus></textarea>
+									<div class="invalid-feedback">
+										توضیحات وارد نشده
+									</div>
+								</div>
+
+
+								<div class="mb-3 col-12">
+									<label class="mb-2 text-muted" for="name">تصویر پروفایل</label>
+									<input asp-for="ProfilePhoto" type="file" class="form-control d-blog" />
+									<div class="invalid-feedback">
+										تصویر پروفایل انتخاب نشده
+									</div>
+								</div>
+
+
+
+								<div class="align-items-center d-flex">
+									<button type="submit" class="btn btn-success ms-auto">
+										راه اندازی
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="~/assets/js/login.js"></script>
+</body>
+</html>

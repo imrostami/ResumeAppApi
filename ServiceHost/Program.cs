@@ -2,8 +2,7 @@ using ResumeAppApi.Infrustructre.Extentions;
 using ResumeAppApi.Application.Extentions;
 using ResumeAppApi.Domain.Entities;
 using ServiceHost.Middelwares;
-
-
+using ResumeAppApi.Infrustructre.Persistense;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddRazorPages();
 
 builder.Services.AddInfrustructre(builder.Configuration);
 builder.Services.AddApplication();
@@ -37,12 +36,16 @@ var app = builder.Build();
 
 app.UseMiddleware<IdentityRouteMiddelware>();
 
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+app.MapRazorPages();
 
 app.UseHttpsRedirection();
 
@@ -55,7 +58,8 @@ app.MapGroup("api/Users").MapIdentityApi<User>();
 
 app.UseStaticFiles();
 
-
-
+using var scope = app.Services.CreateScope();
+var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+await dbContext.Database.EnsureCreatedAsync();
 
 await app.RunAsync();
