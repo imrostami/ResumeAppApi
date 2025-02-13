@@ -19,7 +19,6 @@ namespace ServiceHost.Pages
 		public string Nationality { get; set; }
 		public string ShortAbout { get; set; }
 		public IFormFile ProfilePhoto { get; set; }
-		public string Username { get; set; }
 		public string Email { get; set; }
 		public string Password { get; set; }
 
@@ -43,7 +42,7 @@ namespace ServiceHost.Pages
 				var user = new User()
 				{
 					Email = Email,
-					UserName = Username
+					UserName = Email
 				};
 
 				await userManager.CreateAsync(user, Password);
