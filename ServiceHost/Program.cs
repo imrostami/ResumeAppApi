@@ -26,10 +26,11 @@ var frontUrl = builder.Configuration.GetSection("FrontUrl").Value;
 
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy("AllowFrontEndAppOrigin", builder =>
-	builder.WithOrigins(frontUrl)
+	options.AddPolicy("VueDashboard", pbuilder =>
+	pbuilder.WithOrigins(frontUrl)
 	.AllowAnyHeader()
-	.AllowAnyMethod());
+	.AllowAnyMethod()
+	.AllowCredentials());
 });
 
 var app = builder.Build();
@@ -49,8 +50,9 @@ app.MapRazorPages();
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowFrontEndAppOrigin");
 
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -61,5 +63,8 @@ app.UseStaticFiles();
 using var scope = app.Services.CreateScope();
 var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 await dbContext.Database.EnsureCreatedAsync();
+
+app.UseCors("VueDashboard");
+
 
 await app.RunAsync();

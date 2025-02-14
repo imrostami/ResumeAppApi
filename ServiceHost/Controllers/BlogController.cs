@@ -1,4 +1,5 @@
-﻿using ResumeAppApi.Application.BlogCategories.Commands.CreateBlogCategory;
+﻿using Microsoft.AspNetCore.Cors;
+using ResumeAppApi.Application.BlogCategories.Commands.CreateBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Commands.DeleteBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Commands.UpdateBlogCategory;
 using ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategories;
