@@ -96,7 +96,7 @@ namespace ServiceHost.Controllers
 		}
 
 		[HttpGet("getBlog")]
-		public async Task<IActionResult> GetBlog(GetBlogByIdQuery query)
+		public async Task<IActionResult> GetBlog([FromQuery]GetBlogByIdQuery query)
 		{
 			var blog = await mediator.Send(query);
 			var response = new GetBlogResponse(blog);

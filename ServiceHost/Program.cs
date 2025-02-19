@@ -22,7 +22,7 @@ builder.Services.AddApplication();
 builder.Services.AddFileUploaderService(builder.Environment.WebRootPath);
 
 
-var frontUrl = builder.Configuration.GetSection("FrontUrl").Value;
+var frontUrl = builder.Configuration.GetSection("FrontUrl").Get<string[]>();
 
 builder.Services.AddCors(options =>
 {
