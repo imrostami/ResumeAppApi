@@ -20,7 +20,7 @@ namespace ServiceHost.Controllers
 
 
 		[HttpGet("getWorkSample")]
-		public async Task<IActionResult> GetWorkSampleById(GetWorkSampleByIdQuery query)
+		public async Task<IActionResult> GetWorkSampleById([FromQuery] GetWorkSampleByIdQuery query)
 		{
 			var workSample = await mediator.Send(query);
 			var response = new GetWorkSampleResponse(workSample);
