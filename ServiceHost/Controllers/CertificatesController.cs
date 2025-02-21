@@ -16,7 +16,7 @@ public class CertificatesController(IMediator mediator,
 	}
 
 	[HttpGet("getCertificate")]
-	public async Task<IActionResult> GetCertificateById(GetCertificateByIdQuery query)
+	public async Task<IActionResult> GetCertificateById([FromQuery]GetCertificateByIdQuery query)
 	{
 		var getCertificateResult = await mediator.Send(query);
 		var response = new GetCertificateByIdResponse(getCertificateResult);
