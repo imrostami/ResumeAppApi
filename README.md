@@ -85,11 +85,6 @@ I'm using ***Vue js*** for the main site and ***Nuxt js*** for the blog section
 
 I have used ***Tailwind CSS*** to design the user interface
 
- You can find the source code repository I developed for the frontend here 👇
-
-
-
-
 
 <table>
     <tr>
