@@ -37,7 +37,11 @@ public class SkillRepository(AppDbContext context) : ISkillRepository
 
 	public async Task<Skill?> GetBy(int id)
 		=> await context.Skills.FindAsync(id);
-	public async Task<Skill> UpdateAsync(Skill entity)
+
+    public IQueryable<Skill> Query()
+		=> context.Skills.AsNoTracking();
+
+    public async Task<Skill> UpdateAsync(Skill entity)
 	{
 		context.Skills.Update(entity);
 		await context.SaveChangesAsync();

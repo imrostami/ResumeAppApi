@@ -75,7 +75,10 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
         => await context.Messages
         .CountAsync(x => !x.IsRecived);
 
-	public async Task<Message> UpdateAsync(Message entity)
+    public IQueryable<Message> Query()
+        => context.Messages.AsNoTracking();
+
+    public async Task<Message> UpdateAsync(Message entity)
     {
         context.Messages.Update(entity);
         await context.SaveChangesAsync();

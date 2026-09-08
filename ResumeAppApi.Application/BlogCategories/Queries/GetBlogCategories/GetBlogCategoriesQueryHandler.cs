@@ -1,4 +1,6 @@
-﻿using ResumeAppApi.Application.BlogCategories.Dtos;
+﻿using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
+using ResumeAppApi.Application.BlogCategories.Dtos;
 
 namespace ResumeAppApi.Application.BlogCategories.Queries.GetBlogCategories;
 
@@ -6,9 +8,7 @@ public class GetBlogCategoriesQueryHandler(IBlogArticleCategoryRepository blogAr
 	IMapper mapper) : IRequestHandler<GetBlogCategoriesQuery, IEnumerable<BlogCategoryDto>>
 {
 	public async Task<IEnumerable<BlogCategoryDto>> Handle(GetBlogCategoriesQuery request, CancellationToken cancellationToken)
-	{
-		var categories = await blogArticleCategoryRepository.GetAll();
-		return mapper.Map<IEnumerable<BlogCategoryDto>>(categories);
-		
-	}
+		=> await blogArticleCategoryRepository.Query()
+		.ProjectTo<BlogCategoryDto>(mapper.ConfigurationProvider)
+		.ToListAsync();
 }

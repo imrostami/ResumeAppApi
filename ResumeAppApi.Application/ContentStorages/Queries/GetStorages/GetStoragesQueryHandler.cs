@@ -1,4 +1,6 @@
-﻿using ResumeAppApi.Application.ContentStorages.Dtos;
+﻿using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
+using ResumeAppApi.Application.ContentStorages.Dtos;
 
 namespace ResumeAppApi.Application.ContentStorages.Queries.GetStorages;
 
@@ -9,7 +11,9 @@ public class GetStoragesQueryHandler(IMapper mapper,IContentStorageRepository co
 		var storages = await contentStorage.GetAll();
 
 		if (storages.Any())
-			return mapper.Map<IEnumerable<ContentStorageDto>>(storages);
+			return await contentStorage.Query()
+				.ProjectTo<ContentStorageDto>(mapper.ConfigurationProvider)
+				.ToListAsync();
 
 		return Enumerable.Empty<ContentStorageDto>();
 	}

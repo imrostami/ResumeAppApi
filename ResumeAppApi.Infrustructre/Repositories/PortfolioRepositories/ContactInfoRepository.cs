@@ -39,12 +39,10 @@ public class ContactInfoRepository(AppDbContext context) : IContactInfoRepositor
         => await context.Contacts
 			.FirstOrDefaultAsync(x => x.ContactName == name);
 
+    public IQueryable<ContactInfo> Query()
+        => context.Contacts.AsNoTracking();
 
-
-
-
-
-	public async Task<ContactInfo> UpdateAsync(ContactInfo entity)
+    public async Task<ContactInfo> UpdateAsync(ContactInfo entity)
     {
         context.Contacts.Update(entity);
         await context.SaveChangesAsync();

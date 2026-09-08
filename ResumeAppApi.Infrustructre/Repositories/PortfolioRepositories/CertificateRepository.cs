@@ -37,6 +37,9 @@ public class CertificateRepository(AppDbContext context) : ICertificateRepositor
     public async Task<Certificate?> GetBy(int id)
         => await context.Certificates.FindAsync(id);
 
+    public IQueryable<Certificate> Query()
+        => context.Certificates.AsNoTracking();
+
     public async Task<Certificate> UpdateAsync(Certificate entity)
     {
         context.Certificates.Update(entity);

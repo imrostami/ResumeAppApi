@@ -38,7 +38,10 @@ public class InformationRepository(AppDbContext context) : IInformationRepositor
 	public async Task<Information?> GetFirst() 
 		=> await context.Informations.FirstOrDefaultAsync();
 
-	public async Task<Information> UpdateAsync(Information entity)
+    public IQueryable<Information> Query()
+		=> context.Informations.AsNoTracking();
+
+    public async Task<Information> UpdateAsync(Information entity)
 	{
 		context.Informations.Update(entity);
 		await context.SaveChangesAsync();

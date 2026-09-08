@@ -36,6 +36,9 @@ public class EducationRepository(AppDbContext context) : IEducationRepository
     public async Task<Education?> GetBy(int id)
         => await context.Educations.FindAsync(id);
 
+    public IQueryable<Education> Query()
+        => context.Educations.AsNoTracking();
+
     public async Task<Education> UpdateAsync(Education entity)
     {
         context.Educations.Update(entity);

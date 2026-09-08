@@ -39,7 +39,10 @@ public class BlogArticleCategoryRepository(AppDbContext context) : IBlogArticleC
 	public async Task<BlogArticleCategory?> GetBy(string name) =>
 		await context.BlogArticleCategories.FirstOrDefaultAsync(x => x.CategoryName == name);
 
-	public async Task<BlogArticleCategory> UpdateAsync(BlogArticleCategory entity)
+    public IQueryable<BlogArticleCategory> Query()
+		=> context.BlogArticleCategories.AsNoTracking();
+
+    public async Task<BlogArticleCategory> UpdateAsync(BlogArticleCategory entity)
 	{
 		context.BlogArticleCategories.Update(entity);
 		await context.SaveChangesAsync();

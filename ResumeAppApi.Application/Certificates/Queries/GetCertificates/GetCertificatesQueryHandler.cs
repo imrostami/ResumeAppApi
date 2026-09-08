@@ -1,4 +1,6 @@
-﻿using ResumeAppApi.Application.Certificates.Dtos;
+﻿using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
+using ResumeAppApi.Application.Certificates.Dtos;
 
 namespace ResumeAppApi.Application.Certificates.Queries.GetCertificates;
 
@@ -6,8 +8,8 @@ public class GetCertificatesQueryHandler(ICertificateRepository certificateRepos
 	IMapper mapper) : IRequestHandler<GetCertificatesQuery, IEnumerable<CertificateDto>>
 {
 	public async Task<IEnumerable<CertificateDto>> Handle(GetCertificatesQuery request, CancellationToken cancellationToken)
-	{
-		var certificates = await certificateRepository.GetAll();
-		return mapper.Map<IEnumerable<CertificateDto>>(certificates);
-	}
+		=> await certificateRepository.Query()
+		.OrderByDescending(c => c.CreationTime)
+		.ProjectTo<CertificateDto>(mapper.ConfigurationProvider)
+		.ToListAsync();
 }

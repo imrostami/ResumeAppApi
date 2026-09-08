@@ -54,9 +54,10 @@ public class ContentStorageRepository(AppDbContext context) : IContentStorageRep
 		=> await context.ContentStorages
 			.FirstOrDefaultAsync(x => x.Name == name);
 
+	public IQueryable<ContentStorage> Query()
+		=> context.ContentStorages.AsNoTracking();
 
-
-	public async Task<ContentStorage> UpdateAsync(ContentStorage entity)
+    public async Task<ContentStorage> UpdateAsync(ContentStorage entity)
 	{
 		context.ContentStorages.Update(entity);
 		await context.SaveChangesAsync();

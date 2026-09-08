@@ -43,7 +43,10 @@ public class WorkSampleRepository(AppDbContext context) : IWorkSampleRepository
 		=> await context.WorkSamples.Where(x => x.IsPinned)
 			.ToListAsync();
 
-	public async Task<WorkSample> UpdateAsync(WorkSample entity)
+    public IQueryable<WorkSample> Query()
+		=> context.WorkSamples.AsNoTracking();
+
+    public async Task<WorkSample> UpdateAsync(WorkSample entity)
 	{
 		context.WorkSamples.Update(entity);
 		await context.SaveChangesAsync();

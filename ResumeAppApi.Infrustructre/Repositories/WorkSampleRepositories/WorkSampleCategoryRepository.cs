@@ -43,7 +43,10 @@ public class WorkSampleCategoryRepository(AppDbContext context) : IWorkSampleCat
 
 	}
 
-	public async Task<WorkSampleCategory> UpdateAsync(WorkSampleCategory entity)
+    public IQueryable<WorkSampleCategory> Query()
+		=> context.WorkSampleCategories.AsNoTracking();
+
+    public async Task<WorkSampleCategory> UpdateAsync(WorkSampleCategory entity)
 	{
 		context.WorkSampleCategories.Update(entity);
 		await context.SaveChangesAsync();

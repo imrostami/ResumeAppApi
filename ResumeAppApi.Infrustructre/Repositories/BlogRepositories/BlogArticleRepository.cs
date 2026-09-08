@@ -63,7 +63,10 @@ public class BlogArticleRepository(AppDbContext context) : IBlogArticleRepositor
 		=> await context.BlogArticles
 		.FindAsync(id);
 
-	public async Task<BlogArticle> UpdateAsync(BlogArticle entity)
+    public IQueryable<BlogArticle> Query()
+		=> context.BlogArticles.AsNoTracking();
+
+    public async Task<BlogArticle> UpdateAsync(BlogArticle entity)
 	{
 		context.BlogArticles.Update(entity);
 		await context.SaveChangesAsync();

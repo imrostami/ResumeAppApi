@@ -1,6 +1,6 @@
 ﻿namespace ResumeAppApi.Domain.Contracts;
 
-public interface IRepositoryBase<TEntity> where TEntity : class
+public interface IRepositoryBase<TEntity> : IRepositoryQuery<TEntity> where TEntity : class
 {
     Task<TEntity> CreateAsync(TEntity entity);
     Task<TEntity> UpdateAsync(TEntity entity);
