@@ -6,11 +6,13 @@ public static class ServiceCollectionExtentions
 	{
 		var assembely = typeof(ServiceCollectionExtentions).Assembly;
 
-		
-		services.AddAutoMapper(assembely)
+
+		services.AddAutoMapper(mapperConfig => 
+			mapperConfig.AddMaps(assembely))
 			.AddValidatorsFromAssembly(assembely)
 			.AddFluentValidationAutoValidation()
-			.AddMediatR(mediatr=>mediatr.RegisterServicesFromAssembly(assembely));
+			.AddMediatR(mediatr=>
+			mediatr.RegisterServicesFromAssembly(assembely));
 		
 			
 	}
